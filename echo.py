@@ -22,6 +22,10 @@ def main():
                 file_id = sticker['file_id']
                 sendSticker(chat_id, file_id)
 
+            text = message.get('text', False)
+            if text != False:
+                sendMessage(chat_id, text)
+
             last_update_id = current_update_id
         
         time.sleep(1)
