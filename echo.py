@@ -3,6 +3,7 @@ from handlers import (
     get_last_update,
     sendMessage,
     sendSticker,
+    sendContact,
 )
 from pprint import pprint  
 
@@ -25,6 +26,12 @@ def main():
             text = message.get('text', False)
             if text != False:
                 sendMessage(chat_id, text)
+
+            contact = message.get('contact', False)
+            if contact != False:
+                phone_number = contact['phone_number']
+                first_name = contact['first_name']
+                sendContact(chat_id, phone_number, first_name)
 
             last_update_id = current_update_id
         

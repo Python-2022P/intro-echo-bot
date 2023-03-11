@@ -48,3 +48,10 @@ def sendVoice(chat_id, voice):
     url = f'https://api.telegram.org/bot{TOKIN}/sendVoice'
     data = requests.get(url, params={'chat_id':chat_id, 'voice':voice})
     return data.json()
+
+def sendContact(chat_id, phone_number, first_name):
+    url = f'https://api.telegram.org/bot{TOKIN}/sendContact'
+    payload = {'chat_id':chat_id, 'phone_number':phone_number, 'first_name': first_name}
+    print(payload)
+    data = requests.get(url, params=payload)
+    return data.json()
