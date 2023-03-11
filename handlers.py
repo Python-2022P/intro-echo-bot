@@ -52,6 +52,11 @@ def sendVoice(chat_id, voice):
 def sendContact(chat_id, phone_number, first_name):
     url = f'https://api.telegram.org/bot{TOKIN}/sendContact'
     payload = {'chat_id':chat_id, 'phone_number':phone_number, 'first_name': first_name}
-    print(payload)
+    data = requests.get(url, params=payload)
+    return data.json()
+
+def sendLocation(chat_id, latitude, longitude):
+    url = f'https://api.telegram.org/bot{TOKIN}/sendLocation'
+    payload = {'chat_id':chat_id, 'latitude':latitude, 'longitude': longitude}
     data = requests.get(url, params=payload)
     return data.json()

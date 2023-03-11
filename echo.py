@@ -4,6 +4,7 @@ from handlers import (
     sendMessage,
     sendSticker,
     sendContact,
+    sendLocation,
 )
 from pprint import pprint  
 
@@ -32,6 +33,12 @@ def main():
                 phone_number = contact['phone_number']
                 first_name = contact['first_name']
                 sendContact(chat_id, phone_number, first_name)
+
+            location = message.get('location', False)
+            if location != False:
+                latitude = location['latitude']
+                longitude = location['longitude']
+                sendLocation(chat_id, latitude, longitude)
 
             last_update_id = current_update_id
         
