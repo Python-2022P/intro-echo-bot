@@ -5,6 +5,7 @@ from handlers import (
     sendSticker,
     sendContact,
     sendLocation,
+    sendPhoto,
 )
 from pprint import pprint  
 
@@ -39,6 +40,11 @@ def main():
                 latitude = location['latitude']
                 longitude = location['longitude']
                 sendLocation(chat_id, latitude, longitude)
+
+            photo = message.get('photo', False)
+            if photo != False:
+                file_id = photo[-1]['file_id']
+                sendPhoto(chat_id, file_id)
 
             last_update_id = current_update_id
         
